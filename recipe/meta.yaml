@@ -11,14 +11,15 @@ source:
 
 build:
   number: 1
+  skip: True  # [py<36]
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
   run:
-    - python >=3.6
+    - python
     - dataclasses  # [py<37]
 
 test:
