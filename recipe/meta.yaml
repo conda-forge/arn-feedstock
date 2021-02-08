@@ -10,24 +10,28 @@ source:
   sha256: 305225a420f3b5df77c3c2ddccf3c1c2ea097aa1e63994ecd642d9b3176372a9
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.7  # Package is available from 3.6, see https://github.com/instacart/arn/issues/11
   run:
-    - python >=3.6
+    - python >=3.7
 
 test:
   imports:
     - arn
   commands:
     - pip check
+    - pytest tests
   requires:
     - pip
+    - pytest
+  source_files:
+    - tests
 
 about:
   home: https://github.com/instacart/arn
