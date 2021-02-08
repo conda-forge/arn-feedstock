@@ -11,16 +11,15 @@ source:
 
 build:
   number: 1
-  skip: True  # [py<36]
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.7  # Package is available from 3.6, see https://github.com/instacart/arn/issues/11
   run:
-    - python
-    - dataclasses  # [py<37]
+    - python >=3.7
 
 test:
   imports:
